@@ -25,7 +25,7 @@ Here you can find a documentation of the classes that are currently implemented:
  ```size_t getFieldWidth() const```  
     - Returns the field width of the current object.
 
-```const std::string extractToken(const std::string& str, size_t& next_pos, bool& more)```
+```const std::string extractToken(const std::string& str, size_t& next_pos, bool& more)```  
     - Extracts tokens from `str`.  
     - This extracts the token start at position `next_pos`.  
     - If the extraction is successful it sets `more` to true or false depending if there are more tokens to extract.  
@@ -34,10 +34,10 @@ Here you can find a documentation of the classes that are currently implemented:
         1. There are no more tokens to be extract  
         2. `next_pos` is out of bounds of `str`
 
-```static void setDelimiter(const char&)```
+```static void setDelimiter(const char&)```  
     - Sets the delimiter character. The delimiter character is a shared value accross all instances of Utilities.
 
-```const char getDelimiter() const```
+```const char getDelimiter() const```  
     - Returns the delimiter character.
 
 *My intention with uploading school assignments on GitHub is merely to build a portfolio of my work.* **_Please do not plagiarize._**
