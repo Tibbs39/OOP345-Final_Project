@@ -22,7 +22,7 @@ Here you can find a documentation of the classes that are currently implemented:
 ```
 void setFieldWidth(size_t)
 ```
-    Sets the field width of the current object.
+Sets the field width of the current object.
 
  ```size_t getFieldWidth() const```  
     - Returns the field width of the current object.
