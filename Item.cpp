@@ -30,8 +30,8 @@ Item::Item(std::string str) {
     m_name = util.extractToken(str, next_pos, more);
     m_serialNumber = std::stoi(util.extractToken(str, next_pos, more));
     m_quantity = std::stoi(util.extractToken(str, next_pos, more));
-    m_description = util.extractToken(str, next_pos, more);
     m_widthField = util.getFieldWidth();
+    m_description = util.extractToken(str, next_pos, more);
 }
 
 /* You can assume that a record from the file contains 4 fields separated by a delimiter, 
