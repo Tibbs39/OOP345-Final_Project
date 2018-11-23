@@ -20,7 +20,7 @@ Here you can find a documentation of the classes that are currently implemented:
 
 ### Utilities
 ```void setFieldWidth(size_t)```  
-    <ul><li>Sets the field width of the current object.<ul><li>
+    <ul><li>Sets the field width of the current object.</li></ul>
 
  ```size_t getFieldWidth() const```  
     - Returns the field width of the current object.
