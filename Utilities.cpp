@@ -7,6 +7,7 @@
 // and the content was created entirely by me.
 
 #include "Utilities.h"
+#include <string>
 
 char Utilities::m_delimiter;
 
@@ -31,9 +32,13 @@ const std::string Utilities::extractToken(const std::string& str, size_t& next_p
     
     std::string substr;
     
+    // check if final delimiter
     if (end_pos == std::string::npos) {
         more = false;
         substr = str.substr(cur_pos);
+        // pop_back any "next line" characters
+        if (substr.back() == '\n' || substr.back() == '\r')
+            substr.pop_back();
     } else {
         more = true;
         next_pos = end_pos + 1u;
