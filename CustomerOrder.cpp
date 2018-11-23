@@ -41,7 +41,7 @@ CustomerOrder::CustomerOrder(std::string str) {
     m_listItem = new ItemInfo*[m_cntItem];
     // reset some util stuff for extraction
     more = true; 
-    util.setFieldWidth(0u);
+    // util.setFieldWidth(0u);
     // extract tokens into array
     for (size_t i = 0u; i < m_cntItem; ++i) {
         m_listItem[i] = new ItemInfo(util.extractToken(str, start_pos, more));
@@ -79,6 +79,8 @@ CustomerOrder& CustomerOrder::operator=(CustomerOrder&& src) {
 
         src.m_listItem = nullptr;
     }
+
+    return *this;
 }
 
 CustomerOrder::~CustomerOrder() {
