@@ -19,7 +19,8 @@ Below is a check list of the modules that are to be implemented to the project:
 Here you can find a documentation of the classes that are currently implemented:
 
 ### Utilities
-```void setFieldWidth(size_t)
+```
+void setFieldWidth(size_t)
 ```  
     Sets the field width of the current object.
 
