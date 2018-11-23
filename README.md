@@ -20,7 +20,7 @@ Here you can find a documentation of the classes that are currently implemented:
 
 ### Utilities
 ```void setFieldWidth(size_t)```  
-    - Sets the field width of the current object.
+    Sets the field width of the current object.
 
  ```size_t getFieldWidth() const```  
     - Returns the field width of the current object.
@@ -31,8 +31,8 @@ Here you can find a documentation of the classes that are currently implemented:
     - If the extraction is successful it sets `more` to true or false depending if there are more tokens to extract.  
     - This function returns a string of the token found.  
     - This function will throw an exception if:  
-        1. There are no more tokens to be extract  
-        2. `next_pos` is out of bounds of `str`
+        - There are no more tokens to be extract  
+        - `next_pos` is out of bounds of `str`
 
 ```static void setDelimiter(const char&)```  
     - Sets the delimiter character. The delimiter character is a shared value accross all instances of Utilities.
