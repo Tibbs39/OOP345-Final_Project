@@ -95,13 +95,11 @@ bool LineManager::run(std::ostream& os) {
         }
     }
 
-    CustomerOrder buffer; // remove any completed orders
-    for (size_t i = 0; i < AssemblyLine.size(); ++i) {
-        if (AssemblyLine[i]->getCompleted(buffer))
-            Completed.push_back(std::move(buffer));
-    }
+    CustomerOrder buffer; // remove completed tasks
+    if (AssemblyLine[m_lastTask]->getCompleted(buffer))
+        Completed.push_back(std::move(buffer));
 
-    // check if assemblyline is complete
+    // move all tasks and check if assemblyline is complete
     for (size_t i = 0; i < AssemblyLine.size(); ++i) {
         // if any of them return true, there's still at least one order in the assembly line
         if (AssemblyLine[i]->moveTask()) {
