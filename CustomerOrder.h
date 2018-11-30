@@ -28,7 +28,7 @@ class CustomerOrder {
 
     public:
         CustomerOrder();
-        CustomerOrder(std::string);
+        CustomerOrder(const std::string&);
         CustomerOrder(CustomerOrder&);
         CustomerOrder& operator=(CustomerOrder&) = delete;
         CustomerOrder(CustomerOrder&&) noexcept;

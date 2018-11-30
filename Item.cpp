@@ -13,7 +13,7 @@
 unsigned int Item::m_widthField = 1;
 
 // constructor
-Item::Item(std::string str) {
+Item::Item(const std::string& str) {
     /* Assumes that a record will contain 4 fields, seperated by a delimiter, in the following order:
             name of item
             starting serial number

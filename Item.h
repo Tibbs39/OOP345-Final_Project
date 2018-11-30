@@ -18,7 +18,7 @@ class Item {
     unsigned int static m_widthField;
 
     public:
-        Item(std::string);
+        Item(const std::string&);
 
         const std::string& getName() const;
 
