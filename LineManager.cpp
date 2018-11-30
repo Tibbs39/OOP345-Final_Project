@@ -103,7 +103,7 @@ bool LineManager::run(std::ostream& os) {
         // if any of them return true, there's still at least one order in the assembly line
         if (AssemblyLine[i]->moveTask()) {
             done = false; 
-            break;
+            
         }
     }
 
