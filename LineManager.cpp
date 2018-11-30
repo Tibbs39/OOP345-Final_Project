@@ -40,25 +40,30 @@ LineManager::LineManager(const std::string& str, std::vector<Task*>& tasks, std:
             next = util.extractToken(record, next_pos, more);
 
         if (!next.empty()) {
-            for (size_t i = 0; i < tasks.size(); ++i) {
-                if (tasks[i]->getName() == task) {
-                    // save position of first task
-                    if (isFirst) {
-                        m_firstTask = i;
-                        isFirst = !isFirst;
-                    }
-
+        for (size_t i = 0; i < tasks.size(); ++i) {
+            if (tasks[i]->getName() == task) {
+                // save position of first task
+                if (isFirst) {
+                    m_firstTask = i;
+                    isFirst = !isFirst;
+                }
+                
+                if (!next.empty()) {
                     for (size_t j = 0; j < tasks.size(); ++j) {
                         if (tasks[j]->getName() == next) {
                             tasks[i]->setNextTask(*tasks[j]);
                             break;
                         }
                     }
-                    break;
+                } else {
+                    m_lastTask = i;
                 }
+
+                break;
             }
         }
-
+        }
+        
         // reset
         next_pos = 0;
         more = true;

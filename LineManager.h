@@ -21,6 +21,7 @@ class LineManager {
     std::deque<CustomerOrder> Completed;
     unsigned int m_cntCustomerOrder;
     size_t m_firstTask;
+    size_t m_lastTask;
 
     public:
         LineManager(const std::string&, std::vector<Task*>&, std::vector<CustomerOrder>&);
