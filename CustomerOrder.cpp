@@ -16,11 +16,12 @@
 size_t CustomerOrder::m_widthField = 0;
 
 CustomerOrder::CustomerOrder() {
+    m_cntItem = 0u;
     m_listItem = nullptr;
 }
 
 // custom constructor
-CustomerOrder::CustomerOrder(std::string str) {
+CustomerOrder::CustomerOrder(const std::string& str) {
     // intialize stuff for Utilities
     Utilities util;
     bool more = true;
@@ -91,12 +92,16 @@ CustomerOrder::~CustomerOrder() {
 }
 
 bool CustomerOrder::getItemFillState(std::string str) const {
+    bool filled = true;
     for (unsigned int i = 0; i < m_cntItem; ++i) {
         if (m_listItem[i]->m_itemName == str)
-            return m_listItem[i]->m_fillState;
+            if (!m_listItem[i]->m_fillState) {
+                filled = false;
+                break;
+            }
     }
 
-    return true;
+    return filled;
 }
 
 bool CustomerOrder::getOrderFillState() const {
@@ -110,17 +115,18 @@ bool CustomerOrder::getOrderFillState() const {
 
 void CustomerOrder::fillItem(Item& item, std::ostream& os) {
     for (unsigned int i = 0; i < m_cntItem; ++i) {
-        if (m_listItem[i]->m_itemName == item.getName()) {
+        // check fillState too, there could be more than one of the same item
+        if (m_listItem[i]->m_itemName == item.getName() && !m_listItem[i]->m_fillState) {
             if (item.getQuantity() > 0) {
                 m_listItem[i]->m_serialNumber = item.getSerialNumber();
                 item.updateQuantity();
                 m_listItem[i]->m_fillState = true;
-                os << "Filled " << m_name << ", " << m_product << "[" << m_listItem[i]->m_itemName << "]";
+                os << "Filled ";
             } else {
-                os << "Unable to fill " << m_name << ", " << m_product << "[" << m_listItem[i]->m_itemName << "]";
+                os << "Unable to fill ";
             }
             
-            os << std::endl;
+            os << m_name << ", " << m_product << "[" << m_listItem[i]->m_itemName << "]" << std::endl;
             return;
         }
     }
@@ -129,8 +135,8 @@ void CustomerOrder::fillItem(Item& item, std::ostream& os) {
 void CustomerOrder::display(std::ostream& os) const {
     os << m_name << " - " << m_product << std::endl;
     for (unsigned int i = 0; i < m_cntItem; i++) {
-        os << "[" << std::setw(6) << std::setfill('0') << m_listItem[i]->m_serialNumber 
-           << std::setfill(' ') << "] " << std::setw(m_widthField) << m_listItem[i]->m_itemName
+        os << "[" << std::setw(6) << std::setfill('0') << std::right << m_listItem[i]->m_serialNumber 
+           << std::setfill(' ') << "] " << std::setw(m_widthField) << std::left << m_listItem[i]->m_itemName
            << " - " << (m_listItem[i]->m_fillState ? "FILLED" : "MISSING") << std::endl;
     }
 }
