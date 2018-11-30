@@ -39,7 +39,6 @@ LineManager::LineManager(const std::string& str, std::vector<Task*>& tasks, std:
         if (more)
             next = util.extractToken(record, next_pos, more);
 
-        if (!next.empty()) {
         for (size_t i = 0; i < tasks.size(); ++i) {
             if (tasks[i]->getName() == task) {
                 // save position of first task
@@ -61,7 +60,6 @@ LineManager::LineManager(const std::string& str, std::vector<Task*>& tasks, std:
 
                 break;
             }
-        }
         }
         
         // reset
